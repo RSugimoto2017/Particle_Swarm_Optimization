@@ -1,4 +1,5 @@
 #include "Swarm.h"
+#include "Particle.h"
 
 //コンストラクタ
 //fileName：データセットのファイル名

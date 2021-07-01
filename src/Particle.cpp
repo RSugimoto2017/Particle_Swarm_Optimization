@@ -1,4 +1,5 @@
 #include "Particle.h"
+#include "Swarm.h"
 
 //コンストラクタ
 //argSwarm：属している粒子群
@@ -34,7 +35,7 @@ void Particle::move()
 
   for (i = 0; i < swarm->dataset->exVarNum; i++)
   {
-    velocity = INERTIA * velocity[i] + ACCEL_G * (swarm->gBestPos[i] - pos[i]) * RAND_01 + ACCEL_P * (pBestPos[i] - pos[i]) * RAND_01;
+    velocity[i] = INERTIA * velocity[i] + ACCEL_G * (swarm->gBestPos[i] - pos[i]) * RAND_01 + ACCEL_P * (pBestPos[i] - pos[i]) * RAND_01;
     pos[i] += velocity[i];
   }
   evaluate();
