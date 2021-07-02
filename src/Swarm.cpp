@@ -47,7 +47,7 @@ void Swarm::move()
 
   //全ての粒子を移動する
   best = -1;
-  for (i = 0; i < dataset->exVarNum; i++)
+  for (i = 0; i < SWARM_SIZE; i++)
   {
     particle[i]->move();
     if (gBestValue > particle[i]->value)
@@ -57,7 +57,7 @@ void Swarm::move()
   }
 
   //グローバルベストを更新する
-  if (best != 1)
+  if (best != -1)
   {
     for (i = 0; i < dataset->exVarNum; i++)
     {

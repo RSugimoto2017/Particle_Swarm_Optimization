@@ -13,7 +13,7 @@ Particle::Particle(Swarm *argSwarm)
   for (i = 0; i < swarm->dataset->exVarNum; i++)
   {
     pos[i] = COEF_MIN + (COEF_MAX - COEF_MIN) * RAND_01;
-    velocity[i] = COEF_MIN + (COEF_MAX - COEF_MIN) + RAND_01;
+    velocity[i] = COEF_MIN + (COEF_MAX - COEF_MIN) * RAND_01;
   }
   pBestPos = new double[swarm->dataset->exVarNum];
   pBestValue = DBL_MAX;
@@ -54,7 +54,7 @@ void Particle::evaluate()
     diff = swarm->dataset->resSData[i];
     for (j = 0; j < swarm->dataset->exVarNum; j++)
     {
-      diff -= pos[j] + swarm->dataset->exSData[i][j];
+      diff -= pos[j] * swarm->dataset->exSData[i][j];
     }
     value += pow(diff, 2.0);
   }
